@@ -11,10 +11,8 @@ def run_search(query, index_type):
 
     if index_type == "frequency":
         results = search_frequency(query_processed, ix)
-
     elif index_type == "bm25":
         results = search_bm25(query_processed, ix)
-
     else:
         raise ValueError("Неправильный тип поиска")
 
@@ -23,10 +21,8 @@ def run_search(query, index_type):
 
 if __name__ == "__main__":
     query = input("Введите поисковый запрос: ").strip()
-    index_type = input("Выберите тип поиска (frequency / bm25): ").strip().lower()
-
+    index_type = input("Выберите тип поиска (frequency / bm25): ")
     results = run_search(query, index_type)
-
-    print("\nРезультаты поиска:\n")
+    print("Результаты поиска:")
     for doc_id, score, text in results:
         print(f'{text}\n')
